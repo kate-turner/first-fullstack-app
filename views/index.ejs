@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1> Hot Springs Index Page </h1>
+
+<ul>
+	<% for(let i = 0; i < springsList.length; i++) { %>
+		<a href="/springs/<%=i%>"> <h3> <%= springsList[i].name %> </h3> </a>
+	<%}%>
+</ul>
+</body>
+</html>
