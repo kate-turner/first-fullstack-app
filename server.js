@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride('_method'));
 require('./db/db');
 
 // const Springs = require("./models/springs.js")
@@ -13,13 +17,25 @@ app.get('/springs', (req, res) => {
 	})
 })
 
-app.get('/springs/:index', (req, res) => {
+app.get("/springs/new", (req, res) => {
+	res.render("new.ejs");
+});
 
-	
+app.get('/springs/:index', (req, res) => {
 	res.render("show.ejs", {
 		springsList:Springs[req.params.index]
 	});
 });
+
+
+
+// app.get('springs/:id/edit', (req, res) => {
+// 	res.render('edit.ejs', {
+
+// 	})
+// })
+
+
 
 
 

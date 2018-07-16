@@ -9,7 +9,16 @@
 <ul>
 	<% for(let i = 0; i < springsList.length; i++) { %>
 		<a href="/springs/<%=i%>"> <h3> <%= springsList[i].name %> </h3> </a>
+	<form method="POST" action="/springs/<%springsList[i]%>?_method=DELETE">
+		<input type="submit" value="DELETE">
+	</form>
+	 <a href="/springs/<%springsList[i]%>/edit">Edit</a> 
 	<%}%>
 </ul>
+
+
+<nav>
+	<a href="/springs/new">Know a sweet hot spring to add to our list?</a>
+</nav>
 </body>
 </html>
