@@ -27,18 +27,13 @@ app.post("/springs/new", (req, res) => {
 	
 });
 
-app.get("/springs/:index/edit", (req,res) => {
-	res.send("edit works");
-	// res.render("edit.ejs",  {
-	// 	spring: Springs[req.params.index],
-	// 	index: req.params.index
-	// 	}
-	// );
+app.get('/springs/:index/edit', (req,res) => {
+	res.render("edit.ejs",  {
+		"springsList": Springs[req.params.index],
+		index: req.params.index
+		}
+	);
 });
-
-
-
-
 
 app.get('/springs/:index', (req, res) => {
 	res.render("show.ejs", {
@@ -46,15 +41,16 @@ app.get('/springs/:index', (req, res) => {
 	});
 });
 
+app.put("/springs/:index", (req,res) => {
+	Springs[req.params.index] = (req.body);
+	res.redirect('/springs');
+});
 
+app.delete('/springs/:index', (req, res) => {
+	Springs.splice[req.params.index, 1]
+	res.redirect("/springs");
+});
 
-
-
-// app.get('springs/:id/edit', (req, res) => {
-// 	res.render('edit.ejs', {
-
-// 	})
-// })
 
 
 

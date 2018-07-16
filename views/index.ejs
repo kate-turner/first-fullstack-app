@@ -9,10 +9,11 @@
 <ul>
 	<% for(let i = 0; i < springsList.length; i++) { %>
 		<a href="/springs/<%=i%>"> <h3> <%= springsList[i].name %> </h3> </a>
-	<form method="POST" action="/springs/<%springsList[i]%>?_method=DELETE">
+	<form method="POST" action="/springs/<%=i%>?_method=DELETE">
 		<input type="submit" value="DELETE">
+
 	</form>
-	 <a href="/springs/<%springsList[i]%>/edit">Edit</a> 
+	 <a href="/springs/<%=i%>/edit">Edit</a> 
 	<%}%>
 </ul>
 
