@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
 	})
 })
 
+// had to change id params
 router.get("/:id/edit", (req,res) => {
 	Springs.findById(req.params.id, (err, foundSpring) => {
 	res.render("edit.ejs",  {
@@ -37,27 +38,19 @@ router.get("/new", (req, res) => {
 });
 
 
-
-
 router.post("/new", (req, res) => {
-	Springs.push(req.body);
-	res.redirect('/springs');
-	
+	Springs.create(req.body, (err, createdSpring) => {
+		console.log(createdSpring);
+		res.redirect('/springs');
+	});
 });
 
-router.get("/:index/edit", (req,res) => {
-	res.render("edit.ejs",  {
-		"springsList": Springs[req.params.index],
-		index: req.params.index
-		}
-	);
-});
-
-
-
-router.put("/:index", (req,res) => {
-	Springs[req.params.index] = (req.body);
-	res.redirect('/springs');
+// add id and find by 
+router.put("/:id", (req,res) => {
+	Springs.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedSpring) => {
+		console.log(updatedSpring);
+		res.redirect('/springs');
+	});
 });
 
 
@@ -72,9 +65,11 @@ router.get("/:id", (req, res) => {
 });
 
 
-router.delete("/:index", (req, res) => {
-	Springs.splice[req.params.index, 1]
-	res.redirect("/springs");
+router.delete("/:id", (req, res) => {
+	Springs.findByIdAndRemove(req.params.id, (err, deleteSpring) => {
+		console.log(deleteSpring);
+		res.redirect("/springs");
+	});
 });
 
 module.exports = router;

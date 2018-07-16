@@ -9,7 +9,7 @@
 <ul>
 	<% for(let i = 0; i < springsList.length; i++) { %>
 		<a href="/springs/<%=springsList[i].id%>"> <h3> <%= springsList[i].name %> </h3> </a>
-	<form method="POST" action="/springs/<%=i%>?_method=DELETE">
+	<form method="POST" action="/springs/<%=springsList[i].id%>?_method=DELETE">
 		<input type="submit" value="DELETE">
 
 	</form>
