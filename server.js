@@ -13,6 +13,14 @@ app.get('/springs', (req, res) => {
 	})
 })
 
+app.get('/springs/:index', (req, res) => {
+
+	
+	res.render("show.ejs", {
+		springsList:Springs[req.params.index]
+	});
+});
+
 
 
 
