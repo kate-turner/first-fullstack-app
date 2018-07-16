@@ -21,11 +21,32 @@ app.get("/springs/new", (req, res) => {
 	res.render("new.ejs");
 });
 
+app.post("/springs/new", (req, res) => {
+	Springs.push(req.body);
+	res.redirect('/springs');
+	
+});
+
+app.get("/springs/:index/edit", (req,res) => {
+	res.send("edit works");
+	// res.render("edit.ejs",  {
+	// 	spring: Springs[req.params.index],
+	// 	index: req.params.index
+	// 	}
+	// );
+});
+
+
+
+
+
 app.get('/springs/:index', (req, res) => {
 	res.render("show.ejs", {
 		springsList:Springs[req.params.index]
 	});
 });
+
+
 
 
 
